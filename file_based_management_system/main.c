@@ -1,79 +1,96 @@
-#include<stdio.h>
-#include<string.h>
 #include<ctype.h>
 #include<stdbool.h>
+#include<stdio.h>
+#include<string.h>
 
 void lowercase(char *s);
+void adduser();
+void confirmuser();
+void confirmadmin();
 
-int main()
+struct admin {
+    char name[20];
+    char pass[20];
+};
+struct user
 {
-    #define MAX_USERS 100
-    #define MAX_CHAR_COUNT 100
-    int uenum = 0;
-    char role[20] = "";
-    char userlog[20] = "";
-    char pass[] = "";
-    char admin[20] = "";
-    char passencry[] = "";
+    char name[20];
+    char pass[20];
+};
 
-    char admins[] = {
+int main(){
+    FILE *fp;
+    fp = fopen("admin.txt", "r");
 
-    };
-
-    FILE *fptr;
-    fptr = fopen("admin.txt", "r");
-
-    fgets(admin, sizeof(admin), fptr);
-
-    printf("What is your role?\n");
-    printf("=> ");
-    scanf("%s", &role);
-
-    lowercase(role);
-
-    if (strcmp(role, "admin") == 0)
+    if (fp != NULL)
     {
-        printf("Admin: ");
-        scanf("%s", &userlog);
-        printf("Password: ");
-        scanf(" %s", &pass);
+        char l1 = ' ';
 
+        do {
+            printf("\t\t\t\t\tFile Manager\n\n");
 
-        if (strcmp(userlog, admin) == 0)
-        {
-            printf("Admin valid\n");
-        }
-        else {
-            printf("Admin not valid");
-        }
+            printf("1. Super-User Log-In\n");
+            printf("2. Log-In\n");
+            printf("3. Sign-up\n");
+            printf("4. Exit.\n");
+            printf("What action do you wish to take?\n");
+            printf("=> ");
+            scanf("%c", &l1);
+
+            if (strcmp(l1, 1) == 0)
+            {
+                char name;
+                char pass;
+                FILE *fp;
+                fp = fopen("admin.txt", "r");
+                
+                
+            }
+
+        }while(strcmp(l1, 1) == 1 || strcmp(l1, 2) == 1 || strcmp(l1, 3) == 1 || strcmp(l1, 4) == 1);
     }
+    else {
+        struct admin ami;
 
+        printf("Create the Super-User\n");
+        printf("Super-User ID       : ");
+        scanf("%s", ami.name);
+        printf("Super-User Password : ");
+        sacnf("%s", ami.pass);
 
+        char l1 = ' ';
 
+        do {
+            printf("\t\t\t\t\tFile Manager\n\n");
 
-    
-    /*printf("Enter the number of user you wish to enter: ");
-    scanf("%i", &uenum);
+            printf("1. Super-User Log-In\n");
+            printf("2. Log-In\n");
+            printf("3. Sign-up\n");
+            printf("4. Exit.\n");
+            printf("What action do you wish to take?\n");
+            printf("=> ");
+            scanf("%c", &l1);
 
-    char users[MAX_USERS][MAX_CHAR_COUNT] = {};
+            if (strcmp(l1, 1) == 0)
+            {
+                char name;
+                char pass;
+                
+                
+            }
 
-    for (int i = 0; i < uenum; i++)
-    {
-        printf("Username : ");
-        scanf("%99s", &users[i]);
+        }while(strcmp(l1, 1) == 1 || strcmp(l1, 2) == 1 || strcmp(l1, 3) == 1 || strcmp(l1, 4) == 1);
     }
-    printf("\nUsernames entered:\n");
-
-    for (int i = 0; i < uenum; i++)
-    {
-        printf("Username %i : %s\n", i + 1, users[i]);
-    }*/
 }
 
-void lowercase(char *s)
-{
-    for (int i = 0; i < strlen(s) ; i++)
-    {
-        s[i] = (char)tolower(s[i]);
+void confirmadmin(char *name, char *pass){
+
+    char logid;
+    char logpass; 
+    FILE *fp;
+    fp = fopen("admin.txt", "r");
+
+    while(fgets(logid, sizeof(logid), fp)){
+        
     }
 }

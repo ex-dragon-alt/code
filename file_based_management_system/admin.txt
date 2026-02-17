@@ -1,2 +1,1 @@
-dragon
-char passencry[20] = "Momtaz";
+Dragon abc123

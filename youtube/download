@@ -1,0 +1,6 @@
+#!/bin/bash
+# YouTube Video Downloader Launcher
+
+cd "$(dirname "$0")"
+source venv/bin/activate
+python3 index.py "$@"
